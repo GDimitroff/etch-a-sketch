@@ -1,0 +1,85 @@
+:root {
+  --primary-light: #cbd5e1;
+  --secondary-light: #e2e8f0;
+  --primary-dark: #1e293b;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+
+  font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 1.6rem;
+
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  max-width: 140rem;
+
+  font-size: 2.8rem;
+  padding: 3rem;
+  margin: 0 auto;
+}
+
+.main {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+.grid {
+  width: 50rem;
+  height: 50rem;
+  border: 3px solid var(--primary-dark);
+  border-radius: 3px;
+  background-color: var(--secondary-light);
+}
+
+.footer {
+  max-width: 140rem;
+
+  font-size: 1.6rem;
+  padding: 2rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.copyright {
+  margin-right: 0.8rem;
+}
+
+.fa-github {
+  font-size: 2.2rem;
+  color: var(--primary-dark);
+  transition: transform 0.4s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.4);
+}
