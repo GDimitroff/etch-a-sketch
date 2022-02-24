@@ -1,7 +1,8 @@
 :root {
-  --primary-light: #cbd5e1;
-  --secondary-light: #e2e8f0;
-  --primary-dark: #1e293b;
+  --primary-light: #f1f5f9;
+  --secondary-light: #f8fafc;
+  --primary-dark: #334155;
+  --secondary-dark: #94a3b8;
 
   /* Spring */
   --screamin-green: #5cf64a;
@@ -93,9 +94,10 @@ body {
 .grid {
   width: 50rem;
   height: 50rem;
-  border: 3px solid var(--primary-dark);
   border-radius: 3px;
   background-color: var(--secondary-light);
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 .footer {
