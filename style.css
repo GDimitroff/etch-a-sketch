@@ -1,8 +1,8 @@
 :root {
-  --primary-light: #f1f5f9;
-  --secondary-light: #f8fafc;
-  --primary-dark: #334155;
-  --secondary-dark: #94a3b8;
+  --primary-light: #fdf4ff;
+  --secondary-light: #fae8ff;
+  --primary-dark: #6d0a6d;
+  --secondary-dark: #b5179e;
 
   /* Spring */
   --screamin-green: #5cf64a;
@@ -55,67 +55,67 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
 
-  background-color: var(--primary-light);
-  color: var(--primary-dark);
+  background: linear-gradient(to left, #6d0a6d 0%, #b5179e 50%, #f72585 100%);
 
   display: flex;
   flex-direction: column;
-}
-
-.header {
-  color: var(--primary-light);
-  background-color: var(--primary-dark);
-  width: 100%;
-
-  font-size: 2.2rem;
-  padding: 2.2rem;
-
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.header {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  color: var(--primary-light);
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 2rem;
+}
+
 .fa-paintbrush {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   margin-right: 1rem;
 }
 
 .main {
-  flex: 1;
-
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  max-width: 140rem;
-  margin: 0 auto;
+  border: 2px solid var(--primary-light);
+  border-radius: 9px;
+  overflow: hidden;
 }
 
 .grid {
   display: grid;
-  border-radius: 3px;
-  background-color: var(--secondary-light);
+  width: 70vmin;
+  height: 70vmin;
+  background-color: var(--primary-light);
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
-.grid-small {
-  grid-template-columns: repeat(16, 1fr);
-  border: 1px rgba(0, 0, 0, 0.404) solid;
-}
-
-.grid-small > div {
-  width: 4rem;
-  height: 4rem;
-}
-
 .grid-item {
-  border: 1px solid #eee;
+  border: 1px solid var(--secondary-light);
 }
 
-.github {
-  position: absolute;
-  right: 10rem;
+.settings {
+  height: 70vmin;
+  padding: 2rem;
+  color: var(--primary-light);
+  background-color: var(--primary-dark);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings > .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fa-github {
