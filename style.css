@@ -170,14 +170,70 @@ body {
 .colors > a {
   display: inline-block;
   width: 100%;
+  font-weight: 900;
   text-align: center;
-  background-color: #001d3d;
+  color: var(--primary-light);
   padding: 1rem 0;
+  border: 2px solid var(--primary-light);
+  border-radius: 3px;
+  text-shadow: 0px 0px 8px #0a030cb3;
   cursor: pointer;
 }
 
 .colors > a:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.spring {
+  background: linear-gradient(
+    to right,
+    rgba(67, 185, 41, 1) 0%,
+    rgba(92, 246, 74, 1) 20%,
+    rgba(135, 231, 82, 1) 41%,
+    rgba(255, 202, 233, 1) 59%,
+    rgba(255, 55, 166, 1) 100%
+  );
+}
+
+.summer {
+  background: linear-gradient(
+    to right,
+    rgba(0, 47, 119, 1) 0%,
+    rgba(1, 64, 136, 1) 20%,
+    rgba(0, 91, 176, 1) 40%,
+    rgba(254, 255, 0, 1) 63%,
+    rgba(255, 214, 10, 1) 100%
+  );
+}
+
+.autumn {
+  background: linear-gradient(
+    to right,
+    rgba(255, 189, 0, 1) 0%,
+    rgba(255, 84, 0, 1) 22%,
+    rgba(255, 0, 84, 1) 44%,
+    rgba(158, 0, 89, 1) 72%,
+    rgba(148, 0, 145, 1) 100%
+  );
+}
+
+.winter {
+  background: linear-gradient(
+    to right,
+    rgba(202, 240, 248, 1) 0%,
+    rgba(144, 224, 239, 1) 22%,
+    rgba(0, 180, 216, 1) 44%,
+    rgba(0, 119, 182, 1) 72%,
+    rgba(3, 4, 94, 1) 100%
+  );
+}
+
+.shading {
+  background: #444;
+}
+
+.lighten {
+  background: var(--primary-light);
 }
 
 .github {
