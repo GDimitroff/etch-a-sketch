@@ -3,6 +3,7 @@
   --secondary-light: #fae8ff;
   --primary-dark: #6d0a6d;
   --secondary-dark: #b5179e;
+  --secondary-dark-alternative: #f72585;
 
   /* Spring */
   --screamin-green: #5cf64a;
@@ -103,7 +104,7 @@ body {
 
 .settings {
   height: 70vmin;
-  padding: 2rem;
+  font-size: 1.4rem;
   color: var(--primary-light);
   background-color: var(--primary-dark);
 
@@ -113,10 +114,55 @@ body {
   align-items: center;
 }
 
-.settings > .actions {
+.settings > .grid-settings {
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem;
+}
+
+.grid-settings-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.6rem;
+  text-decoration: underline;
+}
+
+.grid-background,
+.grid-borders {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.grid-background > label,
+.grid-borders > label {
+  margin-right: 0.6rem;
+}
+
+.grid-buttons > a {
+  display: inline-block;
+  background-color: var(--secondary-light);
+  color: var(--primary-dark);
+  padding: 0.6rem 1.6rem;
+  margin: 1.6rem auto;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.grid-density {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.grid-density > input {
+  cursor: pointer;
+  margin-bottom: 0.4rem;
+}
+
+.github {
+  padding: 1.8rem;
 }
 
 .fa-github {
