@@ -14,16 +14,12 @@
   --electric-lime: #ccff33;
 
   /* Summer */
-  --rufous: #a40404ff;
-  --international-orange-engineering: #b30505ff;
-  --international-orange-engineering-2: #bd0505ff;
-  --international-orange-engineering-3: #c70505ff;
-  --sinopia: #d5440bff;
-  --fulvous: #de7f11ff;
-  --saffron: #edbf17ff;
-  --maximum-yellow: #f9f91fff;
-  --cadmium-yellow: #f9f110ff;
-  --middle-yellow: #f9e806ff;
+  --international-orange-engineering-2: #bd0505;
+  --sinopia: #d5440b;
+  --fulvous: #de7f11;
+  --saffron: #edbf17;
+  --maximum-yellow: #f9f91f;
+  --cadmium-yellow: #f9f110;
 
   /* Autumn */
   --duke-blue: #390099;
@@ -205,11 +201,12 @@ body {
 .summer {
   background: linear-gradient(
     to right,
-    rgba(254, 255, 0, 1) 0%,
-    rgba(255, 214, 10, 1) 26%,
-    rgba(255, 160, 4, 1) 50%,
-    rgba(222, 96, 0, 1) 75%,
-    rgba(212, 85, 0, 1) 100%
+    rgba(249, 241, 16, 1) 0%,
+    rgba(249, 249, 31, 1) 20%,
+    rgba(237, 191, 23, 1) 40%,
+    rgba(222, 127, 17, 1) 60%,
+    rgba(213, 68, 11, 1) 80%,
+    rgba(189, 5, 5, 1) 100%
   );
 }
 
