@@ -26,6 +26,7 @@
   --jazzberry-jam: #9e0059;
   --radical-red: #ff0054;
   --orange-pantone: #ff5400;
+  --dark-orange: #ff910a;
   --amber: #ffbd00;
 
   /* Winter */
@@ -213,11 +214,12 @@ body {
 .autumn {
   background: linear-gradient(
     to right,
-    rgba(255, 189, 0, 1) 0%,
-    rgba(255, 84, 0, 1) 22%,
-    rgba(255, 0, 84, 1) 44%,
-    rgba(158, 0, 89, 1) 72%,
-    rgba(148, 0, 145, 1) 100%
+    #ffc000 0%,
+    #ff910a 20%,
+    #ff5400 40%,
+    #ff0054 60%,
+    #9e0059 80%,
+    #390099 100%
   );
 }
 
