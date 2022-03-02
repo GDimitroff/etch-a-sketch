@@ -33,6 +33,7 @@
   --midnight-blue: #03045e;
   --star-command-blue: #0077b6;
   --pacific-blue: #00b4d8;
+  --cyan-v2: #00e6b1;
   --middle-blue: #90e0ef;
   --light-cyan: #caf0f8;
 }
@@ -190,56 +191,57 @@ body {
 .spring {
   background: linear-gradient(
     to right,
-    rgba(204, 255, 51, 1) 0%,
-    rgba(158, 240, 26, 1) 20%,
-    rgba(112, 224, 0, 1) 40%,
-    rgba(56, 176, 0, 1) 60%,
-    rgba(0, 128, 0, 1) 80%,
-    rgba(0, 100, 0, 1) 100%
+    var(--dark-green-x-11) 0%,
+    var(--ao-english) 20%,
+    var(--yellow-green-color-wheel) 40%,
+    var(--sheen-green) 60%,
+    var(--green-lizard) 80%,
+    var(--electric-lime) 100%
   );
 }
 
 .summer {
   background: linear-gradient(
     to right,
-    rgba(249, 241, 16, 1) 0%,
-    rgba(249, 249, 31, 1) 20%,
-    rgba(237, 191, 23, 1) 40%,
-    rgba(222, 127, 17, 1) 60%,
-    rgba(213, 68, 11, 1) 80%,
-    rgba(189, 5, 5, 1) 100%
+    var(--cadmium-yellow) 0%,
+    var(--maximum-yellow) 20%,
+    var(--saffron) 40%,
+    var(--fulvous) 60%,
+    var(--sinopia) 80%,
+    var(--international-orange-engineering-2) 100%
   );
 }
 
 .autumn {
   background: linear-gradient(
     to right,
-    #ffc000 0%,
-    #ff910a 20%,
-    #ff5400 40%,
-    #ff0054 60%,
-    #9e0059 80%,
-    #390099 100%
+    var(--amber) 0%,
+    var(--dark-orange) 20%,
+    var(--orange-pantone) 40%,
+    var(--radical-red) 60%,
+    var(--jazzberry-jam) 80%,
+    var(--duke-blue) 100%
   );
 }
 
 .winter {
   background: linear-gradient(
     to right,
-    rgba(202, 240, 248, 1) 0%,
-    rgba(144, 224, 239, 1) 22%,
-    rgba(0, 180, 216, 1) 44%,
-    rgba(0, 119, 182, 1) 72%,
-    rgba(3, 4, 94, 1) 100%
+    var(--light-cyan) 0%,
+    var(--middle-blue) 20%,
+    var(--cyan-v2) 40%,
+    var(--pacific-blue) 60%,
+    var(--star-command-blue) 80%,
+    var(--midnight-blue) 100%
   );
 }
 
 .shading {
-  background: #444;
+  background: #64748b;
 }
 
 .lighten {
-  background: var(--primary-light);
+  background: #e2e8f0;
 }
 
 .github {
