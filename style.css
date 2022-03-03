@@ -261,6 +261,11 @@ body {
 @media screen and (orientation: portrait) {
   .header {
     font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+
+  .fa-paintbrush {
+    font-size: 2.4rem;
   }
 
   .main {
