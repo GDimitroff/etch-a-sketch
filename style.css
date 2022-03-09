@@ -248,6 +248,10 @@ body {
   background: #e2e8f0;
 }
 
+.github {
+  margin-top: 1rem;
+}
+
 .fa-github {
   font-size: 2.2rem;
   color: var(--secondary-light);
@@ -259,6 +263,10 @@ body {
 }
 
 @media screen and (orientation: portrait) {
+  body {
+    background: linear-gradient(to top, #6d0a6d 0%, #b5179e 50%, #f72585 100%);
+  }
+
   .header {
     font-size: 1.4rem;
     margin: 1rem 0;
@@ -269,42 +277,32 @@ body {
   }
 
   .main {
-    flex: 1;
     flex-direction: column;
-    border-radius: 0;
-    border: none;
   }
 
   .grid {
-    height: 90vmin;
-    width: 90vmin;
-    border: 2px solid var(--primary-light);
-    border-radius: 9px;
+    height: 85vmin;
+    width: 85vmin;
   }
 
   .settings {
-    flex: 1;
-    width: 90vmin;
+    width: 85vmin;
+    height: auto;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem;
-    background: transparent;
+    padding: 0.6rem 0;
   }
 
   .grid-settings-title {
     font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
 
   .grid-settings,
   .paint-settings {
-    padding: 1.4rem;
     margin: 0;
-  }
-
-  .paint-settings {
-    margin-left: 1rem;
-    margin-top: -1.2rem;
+    padding: 0;
   }
 
   .grid-buttons {
@@ -314,6 +312,10 @@ body {
 
   .grid-buttons > a {
     padding: 0.6rem 1.2rem;
+  }
+
+  .paint-settings {
+    margin-top: -1.2rem;
   }
 
   .colors {
