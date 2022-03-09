@@ -41,6 +41,22 @@
     padding: 0;
   }
 
+  .grid-settings::after {
+    content: '';
+    width: 6px;
+    height: 80%;
+    background: linear-gradient(
+      to bottom,
+      #6d0a6d 0%,
+      #b5179e 50%,
+      #6d0a6d 100%
+    );
+
+    position: absolute;
+    left: 49%;
+    top: 10%;
+  }
+
   .grid-buttons {
     display: flex;
     justify-content: space-between;
