@@ -105,7 +105,6 @@ body {
 }
 
 .settings {
-  position: relative;
   height: 70vmin;
   font-size: 1.4rem;
   color: var(--primary-light);
@@ -113,7 +112,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -121,18 +120,12 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 1.8rem;
-  margin-bottom: 4.6rem;
 }
 
-.grid-settings::after {
-  content: '';
+.divider {
   width: 80%;
-  height: 9px;
+  height: 2px;
   background: linear-gradient(to right, #6d0a6d 0%, #b5179e 50%, #6d0a6d 100%);
-
-  position: absolute;
-  left: 10%;
-  top: 36%;
 }
 
 .grid-settings-title {
@@ -183,7 +176,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1.8rem;
 }
 
 .colors {
@@ -265,10 +257,6 @@ body {
   background: #e2e8f0;
 }
 
-.github {
-  margin-top: 1rem;
-}
-
 .fa-github {
   font-size: 2.2rem;
   color: var(--secondary-light);
@@ -276,5 +264,5 @@ body {
 }
 
 .fa-github:hover {
-  transform: rotate(360deg) scale(2);
+  transform: rotate(360deg) scale(1.4);
 }
