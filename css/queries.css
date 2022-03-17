@@ -25,7 +25,7 @@
     width: 85vmin;
   }
 
-  .settings {
+  .options {
     width: 85vmin;
     height: auto;
     flex-direction: row;
@@ -33,14 +33,14 @@
     padding: 1rem 0;
   }
 
-  .grid-settings-title {
+  .options-heading {
     font-size: 1.6rem;
     margin-bottom: 1.6rem;
   }
 
-  .grid-settings,
-  .paint-settings {
-    width: 37%;
+  .options-grid,
+  .options-paint {
+    width: 40%;
     margin: 1rem 0;
     padding: 0;
   }
@@ -58,26 +58,26 @@
     );
   }
 
-  .grid-buttons {
+  .options-grid-buttons {
     display: flex;
     justify-content: space-between;
   }
 
-  .grid-buttons > a {
+  .options-grid-buttons > a {
     text-align: center;
     width: 45%;
     padding: 0.6rem 1.2rem;
     margin: 1rem 0;
   }
 
-  .colors {
+  .options-paint-colors {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.4rem;
     width: 100%;
   }
 
-  .colors > a:not(:last-child) {
+  .options-paint-colors > a:not(:last-child) {
     margin-bottom: 0rem;
   }
 

@@ -104,7 +104,7 @@ body {
   border: 1px solid var(--secondary-light);
 }
 
-.settings {
+.options {
   height: 70vmin;
   font-size: 1.4rem;
   color: var(--primary-light);
@@ -116,7 +116,7 @@ body {
   align-items: center;
 }
 
-.grid-settings {
+.options-grid {
   display: flex;
   flex-direction: column;
   padding: 0 1.8rem;
@@ -128,7 +128,7 @@ body {
   background: linear-gradient(to right, #6d0a6d 0%, #b5179e 50%, #6d0a6d 100%);
 }
 
-.grid-settings-title {
+.options-heading {
   font-size: 1.8rem;
   text-align: center;
   margin-bottom: 1.6rem;
@@ -137,20 +137,20 @@ body {
   text-shadow: 0px 0px 8px #0a030cb3;
 }
 
-.grid-background,
-.grid-borders {
+.options-grid-background,
+.options-grid-borders {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.4rem;
 }
 
-.grid-background > label,
-.grid-borders > label {
+.options-grid-background > label,
+.options-grid-borders > label {
   margin-right: 0.6rem;
 }
 
-.grid-buttons > a {
+.options-grid-buttons > a {
   display: inline-block;
   background-color: var(--secondary-light);
   color: var(--primary-dark);
@@ -160,44 +160,44 @@ body {
   cursor: pointer;
 }
 
-.grid-density {
+.options-grid-density {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.grid-density > input {
+.options-grid-density > input {
   width: 100%;
   cursor: pointer;
   margin-bottom: 0.4rem;
 }
 
-.paint-settings {
+.options-paint {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.colors {
+.options-paint-colors {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
 }
 
-.colors > a {
+.options-paint-colors > a {
   width: 100%;
   display: inline-block;
   font-weight: 900;
   text-align: center;
   color: var(--primary-light);
-  padding: 1rem 0.2rem;
+  padding: 1rem;
   border: 2px solid var(--primary-light);
   border-radius: 3px;
   text-shadow: 0px 0px 8px #0a030cb3;
   cursor: pointer;
 }
 
-.colors > a:not(:last-child) {
+.options-paint-colors > a:not(:last-child) {
   margin-bottom: 1rem;
 }
 
