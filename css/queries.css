@@ -35,12 +35,12 @@
 
   .options-heading {
     font-size: 1.6rem;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1rem;
   }
 
   .options-grid,
   .options-paint {
-    width: 40%;
+    flex-basis: 40%;
     margin: 1rem 0;
     padding: 0;
   }
@@ -73,7 +73,10 @@
   .options-paint-colors {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.4rem;
+    gap: 0.8rem;
+  }
+
+  .options-paint-colors > a {
     width: 100%;
   }
 
