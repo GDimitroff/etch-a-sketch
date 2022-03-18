@@ -145,6 +145,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.4rem;
+  pointer-events: none;
 }
 
 .options-grid-density {
@@ -275,6 +276,7 @@ body {
   height: 30px;
   border: none;
   cursor: pointer;
+  pointer-events: all;
 }
 
 #grid-background::-webkit-color-swatch,
