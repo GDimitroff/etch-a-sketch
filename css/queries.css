@@ -38,11 +38,24 @@
     margin-bottom: 1rem;
   }
 
+  .options-grid {
+    flex-basis: 30%;
+  }
+
   .options-grid,
-  .options-paint {
-    flex-basis: 40%;
+  .options-paint,
+  .options-shadows {
     margin: 1rem 0;
     padding: 0;
+  }
+
+  .options-grid-buttons > a {
+    width: 45%;
+  }
+
+  .options-paint-colors,
+  .options-shadows-colors {
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .divider {
@@ -56,24 +69,6 @@
       #b5179e 50%,
       #6d0a6d 100%
     );
-  }
-
-  .options-grid-buttons > a {
-    width: 45%;
-  }
-
-  .options-paint-colors {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.4rem;
-  }
-
-  .options-paint-colors > a {
-    width: 100%;
-  }
-
-  .options-paint-colors > a:not(:last-child) {
-    margin-bottom: 0rem;
   }
 
   .github {
