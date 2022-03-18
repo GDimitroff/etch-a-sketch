@@ -145,31 +145,33 @@ body {
   margin-bottom: 0.4rem;
 }
 
-.options-grid-background > label,
-.options-grid-borders > label {
-  margin-right: 0.6rem;
-}
-
-.options-grid-buttons > a {
-  display: inline-block;
-  background-color: var(--secondary-light);
-  color: var(--primary-dark);
-  padding: 0.6rem 1.6rem;
-  margin: 1.6rem auto;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
 .options-grid-density {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1rem 0;
 }
 
-.options-grid-density > input {
-  width: 100%;
+.options-grid-density > label {
+  font-weight: 500;
+  color: var(--secondary-light);
+  margin-top: 0.8rem;
+}
+
+.options-grid-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.options-grid-buttons > a {
+  width: 45%;
+  text-align: center;
+  display: inline-block;
+  background-color: var(--secondary-light);
+  color: var(--primary-dark);
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
   cursor: pointer;
-  margin-bottom: 0.4rem;
 }
 
 .options-paint {
@@ -190,7 +192,7 @@ body {
   font-weight: 900;
   text-align: center;
   color: var(--primary-light);
-  padding: 1rem;
+  padding: 1.2rem 1rem;
   border: 2px solid var(--primary-light);
   border-radius: 3px;
   text-shadow: 0px 0px 8px #0a030cb3;
@@ -265,4 +267,50 @@ body {
 
 .fa-github:hover {
   transform: rotate(360deg) scale(1.4);
+}
+
+/********************/
+/* INPUT TYPE RANGE */
+/********************/
+
+input[type='range'] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']:focus {
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 10px;
+  border-radius: 3px;
+  background: var(--primary-light);
+  margin-top: -5px;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 20px;
+  width: 10px;
+  border: none;
+  border-radius: 3px;
+  background: var(--primary-light);
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 10px;
+  box-shadow: 0px 0px 14px rgba(240, 91, 158, 0.918);
+  background: #f72585;
+  border-radius: 3px;
+}
+
+input[type='range']::-moz-range-track {
+  height: 10px;
+  box-shadow: 0px 0px 14px rgba(240, 91, 158, 0.918);
+  background: #f72585;
+  border-radius: 3px;
 }
