@@ -189,13 +189,12 @@ body {
 .options-paint-colors > a {
   width: 100%;
   display: inline-block;
-  font-weight: 900;
   text-align: center;
   color: var(--primary-light);
   padding: 1.2rem 1rem;
-  border: 2px solid var(--primary-light);
+  border: 2px solid var(--secondary-light);
   border-radius: 3px;
-  text-shadow: 0px 0px 8px #0a030cb3;
+  text-shadow: 0 0 2px #000;
   cursor: pointer;
 }
 
@@ -267,6 +266,35 @@ body {
 
 .fa-github:hover {
   transform: rotate(360deg) scale(1.4);
+}
+
+/********************/
+/* INPUT TYPE COLOR */
+/********************/
+
+#grid-background,
+#grid-borders {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 3px;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+#grid-background::-webkit-color-swatch,
+#grid-borders::-webkit-color-swatch {
+  border-radius: 3px;
+  border: 2px solid var(--secondary-light);
+}
+
+#grid-background::-moz-color-swatch,
+#grid-borders::-moz-color-swatch {
+  border-radius: 3px;
+  border: 2px solid var(--secondary-light);
 }
 
 /********************/
