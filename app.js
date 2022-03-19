@@ -12,8 +12,8 @@ const defaultGridBackgroundColor = '#fdf4ff';
 const defaultGridBordersColor = '#D0D0D0';
 
 let cells = [];
-let gridBordersColor = '#D0D0D0';
 let gridBackgroundColor = '#fdf4ff';
+let gridBordersColor = '#D0D0D0';
 
 function createGrid(value = 16) {
   grid.innerHTML = '';
@@ -55,4 +55,16 @@ clearButton.addEventListener('click', (e) => {
   cells.forEach((cell) => {
     cell.style.backgroundColor = gridBackgroundColor;
   });
+});
+
+resetButton.addEventListener('click', (e) => {
+  grid.style.backgroundColor = defaultGridBackgroundColor;
+  gridBackground.value = defaultGridBackgroundColor;
+  gridBorders.value = defaultGridBordersColor;
+
+  gridBackgroundColor = defaultGridBackgroundColor;
+  gridBordersColor = defaultGridBordersColor;
+  densityInput.value = 16;
+  densityLabel.textContent = '16 x 16';
+  createGrid();
 });
