@@ -101,10 +101,6 @@ body {
   background-color: var(--primary-light);
 }
 
-.grid-item {
-  border: 1px solid var(--secondary-light);
-}
-
 .options {
   height: 70vmin;
   width: 25vmin;
