@@ -5,12 +5,15 @@ const gridBackground = document.querySelector(
 const gridBorders = document.querySelector('.options-grid-borders > input');
 const densityInput = document.querySelector('.options-grid-density > input');
 const densityLabel = document.querySelector('.options-grid-density > label');
+const clearButton = document.querySelector('.btn-clear');
+const resetButton = document.querySelector('.btn-reset');
 
 const defaultGridBackgroundColor = '#fdf4ff';
 const defaultGridBordersColor = '#D0D0D0';
 
 let cells = [];
 let gridBordersColor = '#D0D0D0';
+let gridBackgroundColor = '#fdf4ff';
 
 function createGrid(value = 16) {
   grid.innerHTML = '';
@@ -36,7 +39,8 @@ densityInput.addEventListener('change', (e) => {
 });
 
 gridBackground.addEventListener('change', (e) => {
-  grid.style.backgroundColor = e.target.value;
+  gridBackgroundColor = e.target.value;
+  grid.style.backgroundColor = gridBackgroundColor;
 });
 
 gridBorders.addEventListener('change', (e) => {
@@ -44,5 +48,11 @@ gridBorders.addEventListener('change', (e) => {
 
   cells.forEach((cell) => {
     cell.style.border = `1px solid ${gridBordersColor}`;
+  });
+});
+
+clearButton.addEventListener('click', (e) => {
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = gridBackgroundColor;
   });
 });
