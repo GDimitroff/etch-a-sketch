@@ -75,3 +75,74 @@
     display: none;
   }
 }
+
+@media screen and (orientation: landscape) and (max-height: 900px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 580px) {
+  html {
+    font-size: 45%;
+  }
+
+  .header {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+
+  .fa-paintbrush {
+    font-size: 2.4rem;
+  }
+
+  .options {
+    width: 55vmin;
+    flex-flow: row wrap;
+    align-items: initial;
+    align-content: space-evenly;
+  }
+
+  .options-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .options-grid {
+    margin-bottom: 3.6rem;
+  }
+
+  .options-paint,
+  .options-shadows {
+    flex-basis: 30%;
+  }
+
+  .options-paint-colors,
+  .options-shadows-colors {
+    justify-items: center;
+  }
+
+  .options-paint-colors > a,
+  .options-shadows-colors > a {
+    width: 100%;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .github {
+    display: none;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 420px) {
+  .options {
+    width: 65vmin;
+    align-content: center;
+  }
+
+  .options-grid {
+    margin-bottom: 1.6rem;
+  }
+}
