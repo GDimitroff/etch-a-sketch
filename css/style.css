@@ -190,13 +190,10 @@ body {
   text-align: center;
   color: var(--primary-light);
   padding: 0.8rem;
-  border: 1px solid var(--secondary-dark);
+  border: 1px solid var(--secondary-light);
   border-radius: 2px;
   text-shadow: 0 0 2px #000;
   cursor: pointer;
-  -webkit-box-shadow: 5px 4px 37px -1px rgba(247, 37, 133, 0.75);
-  -moz-box-shadow: 5px 4px 37px -1px rgba(247, 37, 133, 0.75);
-  box-shadow: 5px 4px 37px -1px rgba(247, 37, 133, 0.75);
 }
 
 .spring {
