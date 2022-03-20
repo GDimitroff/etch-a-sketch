@@ -7,6 +7,7 @@ const densityInput = document.querySelector('.options-grid-density > input');
 const densityLabel = document.querySelector('.options-grid-density > label');
 const clearButton = document.querySelector('.btn-clear');
 const resetButton = document.querySelector('.btn-reset');
+const paintButtons = document.querySelectorAll('.btn-paint');
 
 const defaultGridBackgroundColor = '#fdf4ff';
 const defaultGridBordersColor = '#D0D0D0';
@@ -106,5 +107,21 @@ resetButton.addEventListener('click', (e) => {
   gridBordersColor = defaultGridBordersColor;
   densityInput.value = 16;
   densityLabel.textContent = '16 x 16';
+
+  paintButtons.forEach((button) => {
+    if (button.classList.contains('spring')) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+
   createGrid();
+});
+
+paintButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    paintButtons.forEach((button) => button.classList.remove('active'));
+    e.target.classList.add('active');
+  });
 });

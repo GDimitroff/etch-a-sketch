@@ -182,17 +182,6 @@ body {
   gap: 0.8rem;
 }
 
-.options-paint-colors > a,
-.options-shadows-colors > a {
-  text-align: center;
-  color: var(--primary-light);
-  padding: 0.8rem;
-  border: 1px solid var(--secondary-light);
-  border-radius: 2px;
-  text-shadow: 0 0 2px #000;
-  cursor: pointer;
-}
-
 .spring {
   background: linear-gradient(
     to right,
@@ -259,12 +248,22 @@ body {
   transform: rotate(360deg) scale(1.4);
 }
 
-a {
-  transition: all 0.2s ease-in-out;
+.btn-paint {
+  color: var(--primary-light);
+  border: 1px solid var(--secondary-light);
+  text-align: center;
+  padding: 0.8rem;
+  border-radius: 2px;
+  text-shadow: 0 0 2px #000;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
 }
 
-a:hover {
-  opacity: 0.6;
+.active,
+.btn-paint:hover {
+  background: var(--secondary-dark-alternative);
+  box-shadow: 0px 0px 14px rgba(240, 91, 158, 0.918),
+    inset 0px 0px 1px 1px var(--secondary-light);
 }
 
 /********************/
