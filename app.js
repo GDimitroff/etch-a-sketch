@@ -22,11 +22,31 @@ function createGrid(value = 16) {
   grid.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${value}, 1fr)`;
 
-  for (let i = 0; i < value * value; i++) {
-    const cell = document.createElement('div');
-    cell.style.border = `1px solid ${gridBordersColor}`;
-    cells.push(cell);
-    grid.appendChild(cell);
+  for (let row = 0; row < value; row++) {
+    for (let col = 0; col < value; col++) {
+      const cell = document.createElement('div');
+      cell.style.backgroundColor = gridBackgroundColor;
+      cell.style.border = `1px solid ${gridBordersColor}`;
+
+      if (row === 0) {
+        cell.style.borderTop = 'none';
+      }
+
+      if (col === 0) {
+        cell.style.borderLeft = 'none';
+      }
+
+      if (col === value - 1) {
+        cell.style.borderRight = 'none';
+      }
+
+      if (row === value - 1) {
+        cell.style.borderBottom = 'none';
+      }
+
+      cells.push(cell);
+      grid.appendChild(cell);
+    }
   }
 }
 
@@ -39,6 +59,26 @@ densityInput.addEventListener('change', (e) => {
 });
 
 gridBackground.addEventListener('change', (e) => {
+  const rgba2hex = (rgba) =>
+    `#${rgba
+      .match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/)
+      .slice(1)
+      .map((n, i) =>
+        (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n))
+          .toString(16)
+          .padStart(2, '0')
+          .replace('NaN', '')
+      )
+      .join('')}`;
+
+  cells.forEach((cell) => {
+    const cellBackgroundColor = rgba2hex(cell.style.backgroundColor);
+
+    if (cellBackgroundColor === gridBackgroundColor) {
+      cell.style.backgroundColor = e.target.value;
+    }
+  });
+
   gridBackgroundColor = e.target.value;
   grid.style.backgroundColor = gridBackgroundColor;
 });
@@ -47,7 +87,7 @@ gridBorders.addEventListener('change', (e) => {
   gridBordersColor = e.target.value;
 
   cells.forEach((cell) => {
-    cell.style.border = `1px solid ${gridBordersColor}`;
+    cell.style.borderColor = gridBordersColor;
   });
 });
 
