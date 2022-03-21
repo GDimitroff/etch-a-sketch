@@ -15,6 +15,17 @@ const defaultGridBordersColor = '#D0D0D0';
 let cells = [];
 let gridBackgroundColor = '#fdf4ff';
 let gridBordersColor = '#D0D0D0';
+let colorPalette = 'spring';
+
+let isDrawing = false;
+grid.onmousedown = () => (isDrawing = true);
+grid.onmouseup = () => (isDrawing = false);
+
+grid.addEventListener('mouseover', (e) => {
+  if (isDrawing && e.target.classList.contains('grid-item')) {
+    e.target.style.backgroundColor = '#000';
+  }
+});
 
 function createGrid(value = 16) {
   grid.innerHTML = '';
@@ -26,6 +37,7 @@ function createGrid(value = 16) {
   for (let row = 0; row < value; row++) {
     for (let col = 0; col < value; col++) {
       const cell = document.createElement('div');
+      cell.classList.add('grid-item');
       cell.style.backgroundColor = gridBackgroundColor;
       cell.style.border = `1px solid ${gridBordersColor}`;
 
@@ -43,6 +55,14 @@ function createGrid(value = 16) {
 
       if (row === value - 1) {
         cell.style.borderBottom = 'none';
+      }
+
+      if (row === 0 && col === 0) {
+        cell.style.borderTopLeftRadius = '9px';
+      }
+
+      if (row === value - 1 && col === 0) {
+        cell.style.borderBottomLeftRadius = '9px';
       }
 
       cells.push(cell);
@@ -123,5 +143,6 @@ paintButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     paintButtons.forEach((button) => button.classList.remove('active'));
     e.target.classList.add('active');
+    colorPalette = e.target.classList[0];
   });
 });

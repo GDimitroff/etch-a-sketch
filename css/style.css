@@ -49,6 +49,7 @@
 html {
   font-size: 62.5%;
   height: -webkit-fill-available;
+  user-select: none;
 }
 
 body {
@@ -99,7 +100,7 @@ body {
   width: 70vmin;
   height: 70vmin;
   background-color: var(--primary-light);
-  padding: 0.6rem;
+  padding: 0.4rem;
 }
 
 .options {
