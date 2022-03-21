@@ -22,8 +22,12 @@ grid.onmousedown = () => (isDrawing = true);
 grid.onmouseup = () => (isDrawing = false);
 
 grid.addEventListener('mouseover', (e) => {
-  if (isDrawing && e.target.classList.contains('grid-item')) {
-    e.target.style.backgroundColor = '#000';
+  const cellClasses = e.target.classList;
+  if (isDrawing && cellClasses.contains('grid-item')) {
+    if (!cellClasses.contains(colorPalette + 'Color')) {
+      e.target.style.backgroundColor = getColor(colorPalette);
+      cellClasses.add(colorPalette + 'Color');
+    }
   }
 });
 
@@ -39,7 +43,6 @@ function createGrid(value = 16) {
       const cell = document.createElement('div');
       cell.classList.add('grid-item');
       cell.style.backgroundColor = gridBackgroundColor;
-      cell.style.border = `1px solid ${gridBordersColor}`;
 
       if (row === 0) {
         cell.style.borderTop = 'none';
@@ -115,6 +118,8 @@ gridBorders.addEventListener('change', (e) => {
 clearButton.addEventListener('click', (e) => {
   cells.forEach((cell) => {
     cell.style.backgroundColor = gridBackgroundColor;
+    cell.className = '';
+    cell.classList.add('grid-item');
   });
 });
 
@@ -146,3 +151,19 @@ paintButtons.forEach((button) => {
     colorPalette = e.target.classList[0];
   });
 });
+
+function getColor(palette) {
+  const spring = [
+    '#006400',
+    '#008000',
+    '#38b000',
+    '#70e000',
+    '#9ef01a',
+    '#ccff33',
+  ];
+
+  if (palette === 'spring') {
+    const index = Math.floor(Math.random() * spring.length);
+    return spring[index];
+  }
+}

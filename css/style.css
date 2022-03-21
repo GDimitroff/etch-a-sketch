@@ -103,6 +103,10 @@ body {
   padding: 0.4rem;
 }
 
+.grid-item {
+  border: 1px solid var(--secondary-light);
+}
+
 .options {
   height: 70vmin;
   width: 25vmin;
