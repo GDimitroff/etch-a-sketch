@@ -43,6 +43,7 @@ function createGrid(value = 16) {
       const cell = document.createElement('div');
       cell.classList.add('grid-item');
       cell.style.backgroundColor = gridBackgroundColor;
+      cell.style.borderColor = gridBordersColor;
 
       if (row === 0) {
         cell.style.borderTop = 'none';
