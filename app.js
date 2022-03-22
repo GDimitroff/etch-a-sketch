@@ -22,8 +22,8 @@ let isDrawing = false;
 grid.onmousedown = () => (isDrawing = true);
 document.body.onmouseup = () => (isDrawing = false);
 
-grid.addEventListener('mouseover', drawHandler);
-grid.addEventListener('mousedown', drawHandler);
+grid.addEventListener('mouseover', draw);
+grid.addEventListener('mousedown', draw);
 
 function createGrid(value = 24) {
   grid.innerHTML = '';
@@ -147,12 +147,21 @@ paintButtons.forEach((button) => {
   });
 });
 
-function drawHandler(e) {
+function draw(e) {
   const cellClasses = e.target.classList;
   if (
     (isDrawing || e.type === 'mousedown') &&
     cellClasses.contains('grid-item')
   ) {
+    if (
+      currentColorPalette === 'shading' ||
+      currentColorPalette === 'lighten'
+    ) {
+      const currentColor = e.target.style.backgroundColor;
+      e.target.style.backgroundColor = getShadeColor(currentColor);
+      return;
+    }
+
     if (!cellClasses.contains(currentColorPalette + 'Color')) {
       e.target.className = '';
       e.target.style.backgroundColor = getColor(currentColorPalette);
@@ -172,4 +181,55 @@ function getColor(palette) {
 
   const index = Math.floor(Math.random() * 6);
   return palettes[palette][index];
+}
+
+function getShadeColor(currentColor) {
+  const matchColors = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
+  const match = matchColors.exec(currentColor);
+
+  if (match === null) {
+    return;
+  }
+
+  let redColor = Number(match[1]);
+  let greenColor = Number(match[2]);
+  let blueColor = Number(match[3]);
+
+  if (currentColorPalette === 'shading') {
+    redColor -= 10;
+    greenColor -= 10;
+    blueColor -= 10;
+
+    if (redColor < 0) {
+      redColor = 0;
+    }
+
+    if (greenColor < 0) {
+      greenColor = 0;
+    }
+
+    if (blueColor < 0) {
+      blueColor = 0;
+    }
+
+    return `rgb(${redColor}, ${greenColor}, ${blueColor})`;
+  } else {
+    redColor += 10;
+    greenColor += 10;
+    blueColor += 10;
+
+    if (redColor > 255) {
+      redColor = 255;
+    }
+
+    if (greenColor > 255) {
+      greenColor = 255;
+    }
+
+    if (blueColor > 255) {
+      blueColor = 255;
+    }
+
+    return `rgb(${redColor + 10}, ${greenColor + 10}, ${blueColor + 10})`;
+  }
 }
