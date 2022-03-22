@@ -11,11 +11,12 @@ const paintButtons = document.querySelectorAll('.btn-paint');
 
 const DEFAULT_BACKGROUND = '#fdf4ff';
 const DEFAULT_BORDERS = '#D0D0D0';
+const DEFAULT_PALETTE = 'spring';
 
 let cells = [];
 let currentBackground = DEFAULT_BACKGROUND;
 let currentBorders = DEFAULT_BORDERS;
-let currentColorPalette = 'spring';
+let currentColorPalette = DEFAULT_PALETTE;
 
 let isDrawing = false;
 grid.onmousedown = () => (isDrawing = true);
@@ -24,7 +25,7 @@ document.body.onmouseup = () => (isDrawing = false);
 grid.addEventListener('mouseover', drawHandler);
 grid.addEventListener('mousedown', drawHandler);
 
-function createGrid(value = 16) {
+function createGrid(value = 24) {
   grid.innerHTML = '';
   cells = [];
 
@@ -124,11 +125,11 @@ resetButton.addEventListener('click', (e) => {
 
   currentBackground = DEFAULT_BACKGROUND;
   currentBorders = DEFAULT_BORDERS;
-  densityInput.value = 16;
-  densityLabel.textContent = '16 x 16';
+  densityInput.value = 24;
+  densityLabel.textContent = '24 x 24';
 
   paintButtons.forEach((button) => {
-    if (button.classList.contains('spring')) {
+    if (button.classList.contains(DEFAULT_PALETTE)) {
       button.classList.add('active');
     } else {
       button.classList.remove('active');
