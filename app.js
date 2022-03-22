@@ -134,6 +134,8 @@ resetButton.addEventListener('click', (e) => {
     } else {
       button.classList.remove('active');
     }
+
+    currentColorPalette = DEFAULT_PALETTE;
   });
 
   createGrid();
