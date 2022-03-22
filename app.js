@@ -25,7 +25,7 @@ grid.addEventListener('mouseover', drawHandler);
 
 function drawHandler(e) {
   const cellClasses = e.target.classList;
-  if (isDrawing || event.type && cellClasses.contains('grid-item')) {
+  if (isDrawing && cellClasses.contains('grid-item')) {
     if (!cellClasses.contains(colorPalette + 'Color')) {
       e.target.className = '';
       e.target.style.backgroundColor = getColor(colorPalette);
