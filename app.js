@@ -9,31 +9,20 @@ const clearButton = document.querySelector('.btn-clear');
 const resetButton = document.querySelector('.btn-reset');
 const paintButtons = document.querySelectorAll('.btn-paint');
 
-const defaultGridBackgroundColor = '#fdf4ff';
-const defaultGridBordersColor = '#D0D0D0';
+const DEFAULT_BACKGROUND = '#fdf4ff';
+const DEFAULT_BORDERS = '#D0D0D0';
 
 let cells = [];
-let gridBackgroundColor = '#fdf4ff';
-let gridBordersColor = '#D0D0D0';
-let colorPalette = 'spring';
+let currentBackground = DEFAULT_BACKGROUND;
+let currentBorders = DEFAULT_BORDERS;
+let currentColorPalette = 'spring';
 
 let isDrawing = false;
 grid.onmousedown = () => (isDrawing = true);
 document.body.onmouseup = () => (isDrawing = false);
 
 grid.addEventListener('mouseover', drawHandler);
-
-function drawHandler(e) {
-  const cellClasses = e.target.classList;
-  if (isDrawing && cellClasses.contains('grid-item')) {
-    if (!cellClasses.contains(colorPalette + 'Color')) {
-      e.target.className = '';
-      e.target.style.backgroundColor = getColor(colorPalette);
-      cellClasses.add('grid-item');
-      cellClasses.add(colorPalette + 'Color');
-    }
-  }
-}
+grid.addEventListener('mousedown', drawHandler);
 
 function createGrid(value = 16) {
   grid.innerHTML = '';
@@ -46,8 +35,8 @@ function createGrid(value = 16) {
     for (let col = 0; col < value; col++) {
       const cell = document.createElement('div');
       cell.classList.add('grid-item');
-      cell.style.backgroundColor = gridBackgroundColor;
-      cell.style.borderColor = gridBordersColor;
+      cell.style.backgroundColor = currentBackground;
+      cell.style.borderColor = currentBorders;
 
       if (row === 0) {
         cell.style.borderTop = 'none';
@@ -103,38 +92,38 @@ gridBackground.addEventListener('change', (e) => {
   cells.forEach((cell) => {
     const cellBackgroundColor = rgba2hex(cell.style.backgroundColor);
 
-    if (cellBackgroundColor === gridBackgroundColor) {
+    if (cellBackgroundColor === currentBackground) {
       cell.style.backgroundColor = e.target.value;
     }
   });
 
-  gridBackgroundColor = e.target.value;
-  grid.style.backgroundColor = gridBackgroundColor;
+  currentBackground = e.target.value;
+  grid.style.backgroundColor = currentBackground;
 });
 
 gridBorders.addEventListener('change', (e) => {
-  gridBordersColor = e.target.value;
+  currentBorders = e.target.value;
 
   cells.forEach((cell) => {
-    cell.style.borderColor = gridBordersColor;
+    cell.style.borderColor = currentBorders;
   });
 });
 
 clearButton.addEventListener('click', (e) => {
   cells.forEach((cell) => {
-    cell.style.backgroundColor = gridBackgroundColor;
+    cell.style.backgroundColor = currentBackground;
     cell.className = '';
     cell.classList.add('grid-item');
   });
 });
 
 resetButton.addEventListener('click', (e) => {
-  grid.style.backgroundColor = defaultGridBackgroundColor;
-  gridBackground.value = defaultGridBackgroundColor;
-  gridBorders.value = defaultGridBordersColor;
+  grid.style.backgroundColor = DEFAULT_BACKGROUND;
+  gridBackground.value = DEFAULT_BACKGROUND;
+  gridBorders.value = DEFAULT_BORDERS;
 
-  gridBackgroundColor = defaultGridBackgroundColor;
-  gridBordersColor = defaultGridBordersColor;
+  currentBackground = DEFAULT_BACKGROUND;
+  currentBorders = DEFAULT_BORDERS;
   densityInput.value = 16;
   densityLabel.textContent = '16 x 16';
 
@@ -153,9 +142,24 @@ paintButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     paintButtons.forEach((button) => button.classList.remove('active'));
     e.target.classList.add('active');
-    colorPalette = e.target.classList[0];
+    currentColorPalette = e.target.classList[0];
   });
 });
+
+function drawHandler(e) {
+  const cellClasses = e.target.classList;
+  if (
+    (isDrawing || e.type === 'mousedown') &&
+    cellClasses.contains('grid-item')
+  ) {
+    if (!cellClasses.contains(currentColorPalette + 'Color')) {
+      e.target.className = '';
+      e.target.style.backgroundColor = getColor(currentColorPalette);
+      cellClasses.add('grid-item');
+      cellClasses.add(currentColorPalette + 'Color');
+    }
+  }
+}
 
 function getColor(palette) {
   const palettes = {
