@@ -19,17 +19,21 @@ let colorPalette = 'spring';
 
 let isDrawing = false;
 grid.onmousedown = () => (isDrawing = true);
-grid.onmouseup = () => (isDrawing = false);
+document.body.onmouseup = () => (isDrawing = false);
 
-grid.addEventListener('mouseover', (e) => {
+grid.addEventListener('mouseover', drawHandler);
+
+function drawHandler(e) {
   const cellClasses = e.target.classList;
-  if (isDrawing && cellClasses.contains('grid-item')) {
+  if (isDrawing || event.type && cellClasses.contains('grid-item')) {
     if (!cellClasses.contains(colorPalette + 'Color')) {
+      e.target.className = '';
       e.target.style.backgroundColor = getColor(colorPalette);
+      cellClasses.add('grid-item');
       cellClasses.add(colorPalette + 'Color');
     }
   }
-});
+}
 
 function createGrid(value = 16) {
   grid.innerHTML = '';
