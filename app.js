@@ -154,17 +154,13 @@ paintButtons.forEach((button) => {
 });
 
 function getColor(palette) {
-  const spring = [
-    '#006400',
-    '#008000',
-    '#38b000',
-    '#70e000',
-    '#9ef01a',
-    '#ccff33',
-  ];
+  const palettes = {
+    spring: ['#006400', '#008000', '#38b000', '#70e000', '#9ef01a', '#ccff33'],
+    summer: ['#bd0505', '#d5440b', '#de7f11', '#edbf17', '#f9f91f', '#f9f110'],
+    autumn: ['#390099', '#9e0059', '#ff0054', '#ff5400', '#ff910a', '#ffbd00'],
+    winter: ['#03045e', '#0077b6', '#00b4d8', '#00e6b1', '#90e0ef', '#caf0f8'],
+  };
 
-  if (palette === 'spring') {
-    const index = Math.floor(Math.random() * spring.length);
-    return spring[index];
-  }
+  const index = Math.floor(Math.random() * 6);
+  return palettes[palette][index];
 }
