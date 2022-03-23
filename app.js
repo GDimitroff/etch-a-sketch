@@ -47,14 +47,6 @@ function createGrid(value = 24) {
         cell.style.borderLeft = 'none';
       }
 
-      if (col === value - 1) {
-        cell.style.borderRight = 'none';
-      }
-
-      if (row === value - 1) {
-        cell.style.borderBottom = 'none';
-      }
-
       if (row === 0 && col === 0) {
         cell.style.borderTopLeftRadius = '9px';
       }
@@ -62,6 +54,9 @@ function createGrid(value = 24) {
       if (row === value - 1 && col === 0) {
         cell.style.borderBottomLeftRadius = '9px';
       }
+
+      cell.style.borderRight = 'none';
+      cell.style.borderBottom = 'none';
 
       cells.push(cell);
       grid.appendChild(cell);
