@@ -101,11 +101,11 @@ body {
   height: 70vmin;
   background-color: var(--primary-light);
   padding: 0.4rem;
-  cursor: url('../images/brush-cursor.png') 2 20, auto;
 }
 
 .grid-item {
   border: 1px solid var(--secondary-light);
+  cursor: url('../images/brush-cursor.png') 0 28, auto;
 }
 
 .options {
