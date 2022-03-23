@@ -178,6 +178,12 @@ body {
   padding: 0.6rem 1.4rem;
   border-radius: 3px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.options-grid-buttons > a:hover {
+  color: var(--secondary-light);
+  background-color: var(--secondary-dark);
 }
 
 .options-paint-colors,
