@@ -124,7 +124,10 @@ function draw(e) {
       currentColorPalette === 'shading' ||
       currentColorPalette === 'lighten'
     ) {
-      const currentColor = e.target.style.backgroundColor || DEFAULT_BACKGROUND;
+      const currentColor =
+        e.target.style.backgroundColor ||
+        hexToRgb(getComputedStyle(root).getPropertyValue('--canvas-color'));
+
       e.target.style.backgroundColor = getShadeColor(currentColor);
       return;
     }
@@ -199,4 +202,9 @@ function getShadeColor(currentColor) {
 
     return `rgb(${redColor + 10}, ${greenColor + 10}, ${blueColor + 10})`;
   }
+}
+
+function hexToRgb(hex) {
+  const [r, g, b] = hex.match(/\w\w/g).map((x) => parseInt(x, 16));
+  return `rgb(${r}, ${g}, ${b})`;
 }
