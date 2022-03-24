@@ -13,26 +13,29 @@ const paintButtons = document.querySelectorAll('.btn-paint');
 const DEFAULT_BACKGROUND = '#fdf4ff';
 const DEFAULT_BORDERS = '#ffffff';
 const DEFAULT_PALETTE = 'spring';
+const DEFAULT_SIZE = 24;
 
 let cells = [];
 let currentColorPalette = DEFAULT_PALETTE;
 
 let isDrawing = false;
-grid.onmousedown = () => (isDrawing = true);
-document.onmouseup = () => (isDrawing = false);
+grid.addEventListener('mousedown', () => (isDrawing = true));
+document.addEventListener('mouseup', () => (isDrawing = false));
 
 grid.addEventListener('mouseover', draw);
 grid.addEventListener('mousedown', draw);
 
-function createGrid(value = 24) {
+function createGrid(size) {
   grid.innerHTML = '';
   cells = [];
 
-  grid.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
-  grid.style.gridTemplateRows = `repeat(${value}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-  for (let row = 0; row < value; row++) {
-    for (let col = 0; col < value; col++) {
+  densityLabel.textContent = `${size} x ${size}`;
+
+  for (let row = 0; row < size; row++) {
+    for (let col = 0; col < size; col++) {
       const cell = document.createElement('div');
       cell.classList.add('grid-item');
 
@@ -40,7 +43,7 @@ function createGrid(value = 24) {
         cell.style.borderTop = 'none';
       }
 
-      if (col === value - 1) {
+      if (col === size - 1) {
         cell.style.borderRight = 'none';
       }
 
@@ -48,7 +51,7 @@ function createGrid(value = 24) {
         cell.style.borderLeft = 'none';
       }
 
-      if (row === value - 1) {
+      if (row === size - 1) {
         cell.style.borderBottom = 'none';
       }
 
@@ -56,7 +59,7 @@ function createGrid(value = 24) {
         cell.style.borderTopLeftRadius = '6px';
       }
 
-      if (row === value - 1 && col === 0) {
+      if (row === size - 1 && col === 0) {
         cell.style.borderBottomLeftRadius = '6px';
       }
 
@@ -66,12 +69,10 @@ function createGrid(value = 24) {
   }
 }
 
-createGrid();
+createGrid(DEFAULT_SIZE);
 
-densityInput.addEventListener('change', (e) => {
-  const gridValue = e.target.value;
-  createGrid(gridValue);
-  densityLabel.textContent = `${gridValue} x ${gridValue}`;
+densityInput.addEventListener('input', (e) => {
+  createGrid(e.target.value);
 });
 
 gridBackground.addEventListener('input', (e) => {
@@ -92,9 +93,6 @@ resetButton.addEventListener('click', (e) => {
   gridBackground.value = DEFAULT_BACKGROUND;
   gridColor.value = DEFAULT_BORDERS;
 
-  densityInput.value = 24;
-  densityLabel.textContent = '24 x 24';
-
   paintButtons.forEach((button) => {
     if (button.classList.contains(DEFAULT_PALETTE)) {
       button.classList.add('active');
@@ -105,7 +103,7 @@ resetButton.addEventListener('click', (e) => {
     currentColorPalette = DEFAULT_PALETTE;
   });
 
-  createGrid();
+  createGrid(DEFAULT_SIZE);
 });
 
 paintButtons.forEach((button) => {
@@ -126,7 +124,7 @@ function draw(e) {
       currentColorPalette === 'shading' ||
       currentColorPalette === 'lighten'
     ) {
-      const currentColor = e.target.style.backgroundColor;
+      const currentColor = e.target.style.backgroundColor || DEFAULT_BACKGROUND;
       e.target.style.backgroundColor = getShadeColor(currentColor);
       return;
     }
