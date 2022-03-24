@@ -36,6 +36,9 @@
   --cyan-v2: #00e6b1;
   --middle-blue: #90e0ef;
   --light-cyan: #caf0f8;
+
+  --canvas-color: #fdf4ff;
+  --grid-color: #ffffff;
 }
 
 *,
@@ -90,7 +93,7 @@ body {
 .main {
   display: flex;
   align-items: center;
-  border-radius: 9px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0px 3px 15px rgb(247, 37, 133, 0.2);
 }
@@ -99,13 +102,14 @@ body {
   display: grid;
   width: 70vmin;
   height: 70vmin;
-  background-color: var(--primary-light);
-  padding: 0.4rem;
+  background-color: var(--grid-color);
+  padding: 0.2rem;
 }
 
 .grid-item {
-  border: 1px solid var(--secondary-light);
+  background-color: var(--canvas-color);
   cursor: url('../images/brush-cursor.png') 0 28, auto;
+  border: 1px solid var(--grid-color);
 }
 
 .options {

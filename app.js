@@ -1,8 +1,9 @@
+const root = document.documentElement;
 const grid = document.querySelector('.grid');
 const gridBackground = document.querySelector(
   '.options-grid-background > input'
 );
-const gridBorders = document.querySelector('.options-grid-borders > input');
+const gridColor = document.querySelector('.options-grid-borders > input');
 const densityInput = document.querySelector('.options-grid-density > input');
 const densityLabel = document.querySelector('.options-grid-density > label');
 const clearButton = document.querySelector('.btn-clear');
@@ -10,17 +11,15 @@ const resetButton = document.querySelector('.btn-reset');
 const paintButtons = document.querySelectorAll('.btn-paint');
 
 const DEFAULT_BACKGROUND = '#fdf4ff';
-const DEFAULT_BORDERS = '#D0D0D0';
+const DEFAULT_BORDERS = '#ffffff';
 const DEFAULT_PALETTE = 'spring';
 
 let cells = [];
-let currentBackground = DEFAULT_BACKGROUND;
-let currentBorders = DEFAULT_BORDERS;
 let currentColorPalette = DEFAULT_PALETTE;
 
 let isDrawing = false;
 grid.onmousedown = () => (isDrawing = true);
-document.body.onmouseup = () => (isDrawing = false);
+document.onmouseup = () => (isDrawing = false);
 
 grid.addEventListener('mouseover', draw);
 grid.addEventListener('mousedown', draw);
@@ -36,27 +35,30 @@ function createGrid(value = 24) {
     for (let col = 0; col < value; col++) {
       const cell = document.createElement('div');
       cell.classList.add('grid-item');
-      cell.style.backgroundColor = currentBackground;
-      cell.style.borderColor = currentBorders;
 
       if (row === 0) {
         cell.style.borderTop = 'none';
+      }
+
+      if (col === value - 1) {
+        cell.style.borderRight = 'none';
       }
 
       if (col === 0) {
         cell.style.borderLeft = 'none';
       }
 
+      if (row === value - 1) {
+        cell.style.borderBottom = 'none';
+      }
+
       if (row === 0 && col === 0) {
-        cell.style.borderTopLeftRadius = '9px';
+        cell.style.borderTopLeftRadius = '6px';
       }
 
       if (row === value - 1 && col === 0) {
-        cell.style.borderBottomLeftRadius = '9px';
+        cell.style.borderBottomLeftRadius = '6px';
       }
-
-      cell.style.borderRight = 'none';
-      cell.style.borderBottom = 'none';
 
       cells.push(cell);
       grid.appendChild(cell);
@@ -72,54 +74,24 @@ densityInput.addEventListener('change', (e) => {
   densityLabel.textContent = `${gridValue} x ${gridValue}`;
 });
 
-gridBackground.addEventListener('change', (e) => {
-  const rgba2hex = (rgba) =>
-    `#${rgba
-      .match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/)
-      .slice(1)
-      .map((n, i) =>
-        (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n))
-          .toString(16)
-          .padStart(2, '0')
-          .replace('NaN', '')
-      )
-      .join('')}`;
-
-  cells.forEach((cell) => {
-    const cellBackgroundColor = rgba2hex(cell.style.backgroundColor);
-
-    if (cellBackgroundColor === currentBackground) {
-      cell.style.backgroundColor = e.target.value;
-    }
-  });
-
-  currentBackground = e.target.value;
-  grid.style.backgroundColor = currentBackground;
+gridBackground.addEventListener('input', (e) => {
+  root.style.setProperty('--canvas-color', e.target.value);
 });
 
-gridBorders.addEventListener('change', (e) => {
-  currentBorders = e.target.value;
-
-  cells.forEach((cell) => {
-    cell.style.borderColor = currentBorders;
-  });
+gridColor.addEventListener('input', (e) => {
+  root.style.setProperty('--grid-color', e.target.value);
 });
 
 clearButton.addEventListener('click', (e) => {
-  cells.forEach((cell) => {
-    cell.style.backgroundColor = currentBackground;
-    cell.className = '';
-    cell.classList.add('grid-item');
-  });
+  createGrid(densityInput.value);
 });
 
 resetButton.addEventListener('click', (e) => {
-  grid.style.backgroundColor = DEFAULT_BACKGROUND;
+  root.style.setProperty('--canvas-color', DEFAULT_BACKGROUND);
+  root.style.setProperty('--grid-color', DEFAULT_BORDERS);
   gridBackground.value = DEFAULT_BACKGROUND;
-  gridBorders.value = DEFAULT_BORDERS;
+  gridColor.value = DEFAULT_BORDERS;
 
-  currentBackground = DEFAULT_BACKGROUND;
-  currentBorders = DEFAULT_BORDERS;
   densityInput.value = 24;
   densityLabel.textContent = '24 x 24';
 
