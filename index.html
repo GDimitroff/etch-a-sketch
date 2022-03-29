@@ -30,9 +30,31 @@
       <section class="grid"></section>
 
       <aside class="options">
-        <div class="options-grid">
-          <h3 class="options-heading">Grid</h3>
-          <div class="options-grid-background">
+        <!-- TODO: Add icons to buttons -->
+        <h3 class="options-heading">Paint Options</h3>
+        <div class="paint-options">
+          <div class="paint-color">
+            <label for="paint-color">Single Color</label>
+            <input
+              type="color"
+              id="paint-color"
+              name="paint-color"
+              value="#f72585"
+            />
+          </div>
+          <a class="spring btn btn-paint active">S</a>
+          <a class="summer btn btn-paint">S</a>
+          <a class="autumn btn btn-paint">A</a>
+          <a class="winter btn btn-paint">W</a>
+          <a class="shading btn btn-paint">Shading</a>
+          <a class="lighten btn btn-paint">Lighten</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="options-heading">Grid Style</h3>
+        <div class="grid-options">
+          <div class="grid-background">
             <label for="grid-background">Background</label>
             <input
               type="color"
@@ -41,16 +63,16 @@
               value="#fdf4ff"
             />
           </div>
-          <div class="options-grid-borders">
-            <label for="grid-borders">Borders</label>
+          <div class="grid-color">
+            <label for="grid-color">Grid Color</label>
             <input
               type="color"
-              id="grid-borders"
-              name="grid-borders"
+              id="grid-color"
+              name="grid-color"
               value="#ffffff"
             />
           </div>
-          <div class="options-grid-density">
+          <div class="grid-density">
             <input
               class="slider"
               type="range"
@@ -63,31 +85,9 @@
             />
             <label for="grid-density">24 x 24</label>
           </div>
-          <div class="options-grid-buttons">
-            <a class="btn-clear">Clear</a>
-            <a class="btn-reset">Reset</a>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="options-paint">
-          <h3 class="options-heading">Paint</h3>
-          <div class="options-paint-colors">
-            <a class="spring btn-paint active">Spring</a>
-            <a class="summer btn-paint">Summer</a>
-            <a class="autumn btn-paint">Autumn</a>
-            <a class="winter btn-paint">Winter</a>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="options-shadows">
-          <h3 class="options-heading">Shadows</h3>
-          <div class="options-shadows-colors">
-            <a class="shading btn-paint">Shading</a>
-            <a class="lighten btn-paint">Lighten</a>
+          <div class="grid-options-buttons">
+            <a class="btn btn-grid-options btn-clear">Clear</a>
+            <a class="btn btn-grid-options btn-reset">Reset</a>
           </div>
         </div>
 

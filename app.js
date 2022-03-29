@@ -1,11 +1,9 @@
 const root = document.documentElement;
 const grid = document.querySelector('.grid');
-const gridBackground = document.querySelector(
-  '.options-grid-background > input'
-);
-const gridColor = document.querySelector('.options-grid-borders > input');
-const densityInput = document.querySelector('.options-grid-density > input');
-const densityLabel = document.querySelector('.options-grid-density > label');
+const gridBackground = document.querySelector('#grid-background');
+const gridColor = document.querySelector('#grid-color');
+const densityInput = document.querySelector('#grid-density');
+const densityLabel = document.querySelector('.grid-density > label');
 const clearButton = document.querySelector('.btn-clear');
 const resetButton = document.querySelector('.btn-reset');
 const paintButtons = document.querySelectorAll('.btn-paint');
