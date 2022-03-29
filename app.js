@@ -1,5 +1,6 @@
 const root = document.documentElement;
 const grid = document.querySelector('.grid');
+const paintColor = document.querySelector('#paint-color');
 const gridBackground = document.querySelector('#grid-background');
 const gridColor = document.querySelector('#grid-color');
 const densityInput = document.querySelector('#grid-density');
@@ -10,11 +11,12 @@ const paintButtons = document.querySelectorAll('.btn-paint');
 
 const DEFAULT_BACKGROUND = '#fdf4ff';
 const DEFAULT_BORDERS = '#ffffff';
-const DEFAULT_PALETTE = 'spring';
+const DEFAULT_COLOR = paintColor.value;
 const DEFAULT_SIZE = 24;
 
 let cells = [];
-let currentColorPalette = DEFAULT_PALETTE;
+let currentColorPalette = null;
+let currentColor = DEFAULT_COLOR;
 
 let isDrawing = false;
 grid.addEventListener('mousedown', () => (isDrawing = true));
@@ -69,8 +71,9 @@ function createGrid(size) {
 
 createGrid(DEFAULT_SIZE);
 
-densityInput.addEventListener('input', (e) => {
-  createGrid(e.target.value);
+paintColor.addEventListener('input', (e) => {
+  paintButtons.forEach((button) => button.classList.remove('active'));
+  currentColor = e.target.value;
 });
 
 gridBackground.addEventListener('input', (e) => {
@@ -81,6 +84,10 @@ gridColor.addEventListener('input', (e) => {
   root.style.setProperty('--grid-color', e.target.value);
 });
 
+densityInput.addEventListener('input', (e) => {
+  createGrid(e.target.value);
+});
+
 clearButton.addEventListener('click', (e) => {
   createGrid(densityInput.value);
 });
@@ -88,18 +95,11 @@ clearButton.addEventListener('click', (e) => {
 resetButton.addEventListener('click', (e) => {
   root.style.setProperty('--canvas-color', DEFAULT_BACKGROUND);
   root.style.setProperty('--grid-color', DEFAULT_BORDERS);
+  paintColor.value = DEFAULT_COLOR;
   gridBackground.value = DEFAULT_BACKGROUND;
   gridColor.value = DEFAULT_BORDERS;
 
-  paintButtons.forEach((button) => {
-    if (button.classList.contains(DEFAULT_PALETTE)) {
-      button.classList.add('active');
-    } else {
-      button.classList.remove('active');
-    }
-
-    currentColorPalette = DEFAULT_PALETTE;
-  });
+  paintButtons.forEach((button) => button.classList.remove('active'));
 
   createGrid(DEFAULT_SIZE);
 });
@@ -118,6 +118,19 @@ function draw(e) {
     (isDrawing || e.type === 'mousedown') &&
     cellClasses.contains('grid-item')
   ) {
+    let isColorPaletteActive = false;
+    paintButtons.forEach((button) => {
+      if (button.classList.contains('active')) {
+        isColorPaletteActive = true;
+        return;
+      }
+    });
+
+    if (!isColorPaletteActive) {
+      e.target.style.backgroundColor = currentColor;
+      return;
+    }
+
     if (
       currentColorPalette === 'shading' ||
       currentColorPalette === 'lighten'

@@ -141,13 +141,13 @@ body {
 .paint-options {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 1rem 0.8rem;
 }
 
 .paint-color,
 .grid-background,
 .grid-color {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -156,7 +156,7 @@ body {
 
 .btn {
   text-align: center;
-  padding: 1rem 0;
+  padding: 0.8rem;
   border-radius: 2px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
@@ -239,13 +239,14 @@ body {
 .grid-options {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+  gap: 1.4rem;
 }
 
 .grid-density {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1.6rem 0;
+  margin: 1.2rem 0 0.6rem 0;
 }
 
 .grid-density > label {
@@ -292,33 +293,40 @@ body {
 /* INPUT TYPE COLOR */
 /********************/
 
-#paint-color,
-#grid-background,
-#grid-color {
+input[type='color'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 2px;
+  margin: 0;
+  padding: 0;
   background: transparent;
   width: 40%;
-  height: 35px;
+  height: 30px;
   border: none;
   cursor: pointer;
   pointer-events: all;
 }
 
-#paint-color::-webkit-color-swatch,
-#grid-background::-webkit-color-swatch,
-#grid-color::-webkit-color-swatch {
+input[type='color']::-webkit-color-swatch {
   border-radius: 2px;
-  border: 3px solid var(--primary-light);
+  border: 2px solid var(--primary-light);
 }
 
-#paint-color::-moz-color-swatch,
-#grid-background::-moz-color-swatch,
-#grid-color::-moz-color-swatch {
+input[type='color']::-moz-color-swatch {
   border-radius: 2px;
-  border: 3px solid var(--primary-light);
+  border: 2px solid var(--primary-light);
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+input[type='color']::-moz-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+  background: none;
 }
 
 /********************/
