@@ -70,7 +70,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
 }
 
 .header {
@@ -81,7 +80,6 @@ body {
 
   display: flex;
   align-items: center;
-
   margin: 3rem;
 }
 
