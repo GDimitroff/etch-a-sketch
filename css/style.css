@@ -224,6 +224,13 @@ body {
   );
 }
 
+.fa-leaf,
+.fa-sun,
+.fa-canadian,
+.fa-snowflake {
+  font-size: 1.8rem;
+}
+
 .shading,
 .lighten {
   grid-column: span 2;
