@@ -49,11 +49,8 @@
     grid-column: span 1;
   }
 
+  .github,
   .divider {
-    display: none;
-  }
-
-  .github {
     display: none;
   }
 }
@@ -64,14 +61,13 @@
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 580px) {
+@media screen and (orientation: landscape) and (max-height: 620px) {
   html {
     font-size: 45%;
   }
 
   .header {
     font-size: 1.4rem;
-    margin: 1rem 0;
   }
 
   .fa-paintbrush {
@@ -79,52 +75,34 @@
   }
 
   .options {
-    width: 55vmin;
-    flex-flow: row wrap;
-    align-items: initial;
-    align-content: space-evenly;
+    width: 35vmin;
+    padding: 1rem 3rem;
   }
 
-  .options-heading {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-
-  .options-grid {
-    margin-bottom: 3.6rem;
-  }
-
-  .options-paint,
-  .options-shadows {
-    flex-basis: 30%;
-  }
-
-  .options-paint-colors,
-  .options-shadows-colors {
-    justify-items: center;
-  }
-
-  .options-paint-colors > a,
-  .options-shadows-colors > a {
-    width: 100%;
-  }
-
-  .divider {
-    display: none;
-  }
-
-  .github {
-    display: none;
+  input[type='color'] {
+    height: 20px;
   }
 }
 
 @media screen and (orientation: landscape) and (max-height: 420px) {
-  .options {
-    width: 65vmin;
-    align-content: center;
+  .header {
+    margin: 1rem;
   }
 
-  .options-grid {
-    margin-bottom: 1.6rem;
+  .options {
+    width: 50vmin;
+  }
+
+  .options-heading {
+    margin-bottom: 1rem;
+  }
+
+  .paint-options {
+    margin-bottom: 2.6rem;
+  }
+
+  .github,
+  .divider {
+    display: none;
   }
 }
