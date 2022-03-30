@@ -229,6 +229,7 @@ body {
 .fa-canadian,
 .fa-snowflake {
   font-size: 1.8rem;
+  pointer-events: none;
 }
 
 .shading,

@@ -14,7 +14,6 @@ const DEFAULT_BORDERS = '#ffffff';
 const DEFAULT_COLOR = paintColor.value;
 const DEFAULT_SIZE = 24;
 
-let cells = [];
 let currentColorPalette = null;
 let currentColor = DEFAULT_COLOR;
 
@@ -27,7 +26,6 @@ grid.addEventListener('mousedown', draw);
 
 function createGrid(size) {
   grid.innerHTML = '';
-  cells = [];
 
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -63,7 +61,6 @@ function createGrid(size) {
         cell.style.borderBottomLeftRadius = '6px';
       }
 
-      cells.push(cell);
       grid.appendChild(cell);
     }
   }
@@ -114,6 +111,7 @@ paintButtons.forEach((button) => {
 
 function draw(e) {
   const cellClasses = e.target.classList;
+
   if (
     (isDrawing || e.type === 'mousedown') &&
     cellClasses.contains('grid-item')
