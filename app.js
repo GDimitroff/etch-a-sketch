@@ -134,27 +134,27 @@ function changeColor(e) {
 function applyColor(cell) {
   if (!colorPalette) {
     cell.style.backgroundColor = color;
-    cell.className = '';
-    cell.classList.add('grid-item');
-    return;
   }
 
-  if (colorPalette === 'shading' || colorPalette === 'lighten') {
-    const currentColor =
-      cell.style.backgroundColor ||
-      hexToRgb(getComputedStyle(root).getPropertyValue('--canvas-color'));
+  if (colorPalette) {
+    if (colorPalette === 'shading' || colorPalette === 'lighten') {
+      const currentColor =
+        cell.style.backgroundColor ||
+        hexToRgb(getComputedStyle(root).getPropertyValue('--canvas-color'));
 
-    cell.style.backgroundColor = getShadeColor(currentColor);
-  } else {
-    if (cell.classList.contains(colorPalette + '-palette')) {
-      return;
+      cell.style.backgroundColor = getShadeColor(currentColor);
+    } else {
+      if (cell.classList.contains(colorPalette + '-palette')) {
+        return;
+      }
+
+      cell.style.backgroundColor = getColor(colorPalette);
     }
-
-    cell.className = '';
-    cell.style.backgroundColor = getColor(colorPalette);
-    cell.classList.add('grid-item');
-    cell.classList.add(colorPalette + '-palette');
   }
+
+  cell.className = '';
+  cell.classList.add('grid-item');
+  colorPalette ? cell.classList.add(colorPalette + '-palette') : '';
 }
 
 function getColor(palette) {
