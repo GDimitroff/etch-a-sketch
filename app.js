@@ -14,15 +14,16 @@ const DEFAULT_BORDERS = '#ffffff';
 const DEFAULT_COLOR = paintColor.value;
 const DEFAULT_SIZE = 24;
 
-let currentColorPalette = null;
-let currentColor = DEFAULT_COLOR;
+let colorPalette = null;
+let color = DEFAULT_COLOR;
 
 let isDrawing = false;
 grid.addEventListener('mousedown', () => (isDrawing = true));
 document.addEventListener('mouseup', () => (isDrawing = false));
 
-grid.addEventListener('mouseover', draw);
-grid.addEventListener('mousedown', draw);
+grid.addEventListener('mouseover', changeColor);
+grid.addEventListener('mousedown', changeColor);
+grid.addEventListener('touchmove', changeColor);
 
 function createGrid(size) {
   grid.innerHTML = '';
@@ -70,7 +71,8 @@ createGrid(DEFAULT_SIZE);
 
 paintColor.addEventListener('input', (e) => {
   paintButtons.forEach((button) => button.classList.remove('active'));
-  currentColor = e.target.value;
+  colorPalette = null;
+  color = e.target.value;
 });
 
 gridBackground.addEventListener('input', (e) => {
@@ -105,48 +107,53 @@ paintButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
     paintButtons.forEach((button) => button.classList.remove('active'));
     e.target.classList.add('active');
-    currentColorPalette = e.target.classList[0];
+    colorPalette = e.target.classList[0];
   });
 });
 
-function draw(e) {
-  const cellClasses = e.target.classList;
+function changeColor(e) {
+  let cell = e.target;
+  if (e.type === 'touchmove') {
+    e.preventDefault();
 
-  if (
-    (isDrawing || e.type === 'mousedown') &&
-    cellClasses.contains('grid-item')
-  ) {
-    let isColorPaletteActive = false;
-    paintButtons.forEach((button) => {
-      if (button.classList.contains('active')) {
-        isColorPaletteActive = true;
-        return;
-      }
-    });
+    cell = document.elementFromPoint(
+      e.touches[0].clientX,
+      e.touches[0].clientY
+    );
 
-    if (!isColorPaletteActive) {
-      e.target.style.backgroundColor = currentColor;
+    isDrawing = true;
+  }
+
+  if (!cell || !isDrawing || !cell.classList.contains('grid-item')) {
+    return;
+  }
+
+  applyColor(cell);
+}
+
+function applyColor(cell) {
+  if (!colorPalette) {
+    cell.style.backgroundColor = color;
+    cell.className = '';
+    cell.classList.add('grid-item');
+    return;
+  }
+
+  if (colorPalette === 'shading' || colorPalette === 'lighten') {
+    const currentColor =
+      cell.style.backgroundColor ||
+      hexToRgb(getComputedStyle(root).getPropertyValue('--canvas-color'));
+
+    cell.style.backgroundColor = getShadeColor(currentColor);
+  } else {
+    if (cell.classList.contains(colorPalette + '-palette')) {
       return;
     }
 
-    if (
-      currentColorPalette === 'shading' ||
-      currentColorPalette === 'lighten'
-    ) {
-      const currentColor =
-        e.target.style.backgroundColor ||
-        hexToRgb(getComputedStyle(root).getPropertyValue('--canvas-color'));
-
-      e.target.style.backgroundColor = getShadeColor(currentColor);
-      return;
-    }
-
-    if (!cellClasses.contains(currentColorPalette + 'Color')) {
-      e.target.className = '';
-      e.target.style.backgroundColor = getColor(currentColorPalette);
-      cellClasses.add('grid-item');
-      cellClasses.add(currentColorPalette + 'Color');
-    }
+    cell.className = '';
+    cell.style.backgroundColor = getColor(colorPalette);
+    cell.classList.add('grid-item');
+    cell.classList.add(colorPalette + '-palette');
   }
 }
 
@@ -174,7 +181,7 @@ function getShadeColor(currentColor) {
   let greenColor = Number(match[2]);
   let blueColor = Number(match[3]);
 
-  if (currentColorPalette === 'shading') {
+  if (colorPalette === 'shading') {
     redColor -= 10;
     greenColor -= 10;
     blueColor -= 10;
