@@ -115,3 +115,18 @@
     display: none;
   }
 }
+
+@media (hover: none) {
+  .btn-grid-options:hover {
+    flex-basis: 30%;
+    color: var(--primary-dark);
+    background-color: var(--secondary-light);
+    border: 1px solid transparent;
+  }
+
+  .btn-grid-options.active {
+    color: var(--secondary-light);
+    background-color: var(--secondary-dark);
+    border: 1px solid var(--secondary-light);
+  }
+}

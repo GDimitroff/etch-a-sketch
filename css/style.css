@@ -271,9 +271,9 @@ body {
 }
 
 .btn-grid-options {
-  flex-basis: 32%;
-  background-color: var(--secondary-light);
+  flex-basis: 30%;
   color: var(--primary-dark);
+  background-color: var(--secondary-light);
   border: 1px solid transparent;
 }
 
