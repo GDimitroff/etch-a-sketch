@@ -153,7 +153,7 @@ function applyColor(cell) {
       cell.style.backgroundColor = getColor(colorPalette);
     }
   } else {
-    cell.style.backgroundColor = '';
+    cell.removeAttribute('style');
   }
 
   cell.className = '';

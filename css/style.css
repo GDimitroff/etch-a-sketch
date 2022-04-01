@@ -5,38 +5,6 @@
   --secondary-dark: #b5179e;
   --secondary-dark-alternative: #f72585;
 
-  /* Spring */
-  --dark-green-x-11: #006400;
-  --ao-english: #008000;
-  --yellow-green-color-wheel: #38b000;
-  --sheen-green: #70e000;
-  --green-lizard: #9ef01a;
-  --electric-lime: #ccff33;
-
-  /* Summer */
-  --international-orange-engineering-2: #bd0505;
-  --sinopia: #d5440b;
-  --fulvous: #de7f11;
-  --saffron: #edbf17;
-  --maximum-yellow: #f9f91f;
-  --cadmium-yellow: #f9f110;
-
-  /* Autumn */
-  --duke-blue: #390099;
-  --jazzberry-jam: #9e0059;
-  --radical-red: #ff0054;
-  --orange-pantone: #ff5400;
-  --dark-orange: #ff910a;
-  --amber: #ffbd00;
-
-  /* Winter */
-  --midnight-blue: #03045e;
-  --star-command-blue: #0077b6;
-  --pacific-blue: #00b4d8;
-  --cyan-v2: #00e6b1;
-  --middle-blue: #90e0ef;
-  --light-cyan: #caf0f8;
-
   --canvas-color: #fdf4ff;
   --grid-color: #eeeeee;
 }
@@ -179,48 +147,48 @@ body {
 .spring {
   background: linear-gradient(
     to right,
-    var(--dark-green-x-11) 0%,
-    var(--ao-english) 20%,
-    var(--yellow-green-color-wheel) 40%,
-    var(--sheen-green) 60%,
-    var(--green-lizard) 80%,
-    var(--electric-lime) 100%
+    #ccff33 0%,
+    #9ef01a 20%,
+    #70e000 40%,
+    #38b000 60%,
+    #008000 80%,
+    #006400 100%
   );
 }
 
 .summer {
   background: linear-gradient(
     to right,
-    var(--cadmium-yellow) 0%,
-    var(--maximum-yellow) 20%,
-    var(--saffron) 40%,
-    var(--fulvous) 60%,
-    var(--sinopia) 80%,
-    var(--international-orange-engineering-2) 100%
+    #f9f110 0%,
+    #f9f91f 20%,
+    #edbf17 40%,
+    #de7f11 60%,
+    #d5440b 80%,
+    #bd0505 100%
   );
 }
 
 .autumn {
   background: linear-gradient(
     to right,
-    var(--amber) 0%,
-    var(--dark-orange) 20%,
-    var(--orange-pantone) 40%,
-    var(--radical-red) 60%,
-    var(--jazzberry-jam) 80%,
-    var(--duke-blue) 100%
+    #ffbd00 0%,
+    #ff910a 20%,
+    #ff5400 40%,
+    #ff0054 60%,
+    #9e0059 80%,
+    #390099 100%
   );
 }
 
 .winter {
   background: linear-gradient(
     to right,
-    var(--light-cyan) 0%,
-    var(--middle-blue) 20%,
-    var(--cyan-v2) 40%,
-    var(--pacific-blue) 60%,
-    var(--star-command-blue) 80%,
-    var(--midnight-blue) 100%
+    #caf0f8 0%,
+    #90e0ef 20%,
+    #00e6b1 40%,
+    #00b4d8 60%,
+    #0077b6 80%,
+    #03045e 100%
   );
 }
 
