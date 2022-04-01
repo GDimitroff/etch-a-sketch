@@ -32,6 +32,7 @@ function createGrid(size) {
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
+  densityInput.value = size;
   densityLabel.textContent = `${size} x ${size}`;
 
   for (let row = 0; row < size; row++) {
