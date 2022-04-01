@@ -102,11 +102,11 @@ body {
   height: 70vmin;
   background-color: var(--grid-color);
   padding: 0.2rem;
+  cursor: url('../images/brush-cursor.png') 0 28, auto;
 }
 
 .grid-item {
   background-color: var(--canvas-color);
-  cursor: url('../images/brush-cursor.png') 0 28, auto;
   border: 1px solid var(--grid-color);
 }
 
@@ -227,7 +227,8 @@ body {
 .fa-leaf,
 .fa-sun,
 .fa-canadian-maple-leaf,
-.fa-snowflake {
+.fa-snowflake,
+.fa-eraser {
   font-size: 1.8rem;
   pointer-events: none;
 }
@@ -270,14 +271,17 @@ body {
 }
 
 .btn-grid-options {
-  flex-basis: 48%;
+  flex-basis: 32%;
   background-color: var(--secondary-light);
   color: var(--primary-dark);
+  border: 1px solid transparent;
 }
 
-.btn-grid-options:hover {
+.btn-grid-options:hover,
+.btn-grid-options.active {
   color: var(--secondary-light);
   background-color: var(--secondary-dark);
+  border: 1px solid var(--secondary-light);
 }
 
 .fa-github {

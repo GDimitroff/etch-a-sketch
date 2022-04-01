@@ -1,13 +1,14 @@
 const root = document.documentElement;
 const grid = document.querySelector('.grid');
 const paintColor = document.querySelector('#paint-color');
+const paintButtons = document.querySelectorAll('.btn-paint');
 const gridBackground = document.querySelector('#grid-background');
 const gridColor = document.querySelector('#grid-color');
 const densityInput = document.querySelector('#grid-density');
 const densityLabel = document.querySelector('.grid-density > label');
+const eraseButton = document.querySelector('.btn-eraser');
 const clearButton = document.querySelector('.btn-clear');
 const resetButton = document.querySelector('.btn-reset');
-const paintButtons = document.querySelectorAll('.btn-paint');
 
 const DEFAULT_BACKGROUND = '#fdf4ff';
 const DEFAULT_BORDERS = '#ffffff';
@@ -87,7 +88,20 @@ densityInput.addEventListener('input', (e) => {
   createGrid(e.target.value);
 });
 
+eraseButton.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('active')) {
+    e.target.classList.add('active');
+    paintButtons.forEach((button) => button.classList.remove('active'));
+    colorPalette = null;
+    color = null;
+  } else {
+    e.target.classList.remove('active');
+    color = paintColor.value;
+  }
+});
+
 clearButton.addEventListener('click', (e) => {
+  eraseButton.classList.remove('active');
   createGrid(densityInput.value);
 });
 
@@ -99,6 +113,7 @@ resetButton.addEventListener('click', (e) => {
   gridColor.value = DEFAULT_BORDERS;
 
   paintButtons.forEach((button) => button.classList.remove('active'));
+  eraseButton.classList.remove('active');
 
   createGrid(DEFAULT_SIZE);
 });
@@ -108,6 +123,7 @@ paintButtons.forEach((button) => {
     paintButtons.forEach((button) => button.classList.remove('active'));
     e.target.classList.add('active');
     colorPalette = e.target.classList[0];
+    eraseButton.classList.remove('active');
   });
 });
 
@@ -132,6 +148,10 @@ function changeColor(e) {
 }
 
 function applyColor(cell) {
+  if (eraseButton.classList.contains('active')) {
+    cell.style.backgroundColor = '';
+  }
+
   if (!colorPalette) {
     cell.style.backgroundColor = color;
   }
