@@ -1,7 +1,7 @@
 const root = document.documentElement;
 const grid = document.querySelector('.grid');
 const paintColor = document.querySelector('#paint-color');
-const paintButtons = document.querySelectorAll('.btn-paint');
+const colorPalettes = document.querySelectorAll('.btn-paint');
 const gridBackground = document.querySelector('#grid-background');
 const gridColor = document.querySelector('#grid-color');
 const densityInput = document.querySelector('#grid-density');
@@ -10,13 +10,13 @@ const eraseButton = document.querySelector('.btn-eraser');
 const clearButton = document.querySelector('.btn-clear');
 const resetButton = document.querySelector('.btn-reset');
 
-const DEFAULT_BACKGROUND = '#fdf4ff';
-const DEFAULT_BORDERS = '#ffffff';
-const DEFAULT_COLOR = paintColor.value;
-const DEFAULT_SIZE = 24;
+const DEFAULT_GRID_BACKGROUND = '#fdf4ff';
+const DEFAULT_GRID_COLOR = '#eeeeee';
+const DEFAULT_GRID_SIZE = 24;
+const DEFAULT_PAINT_COLOR = paintColor.value;
 
 let colorPalette = null;
-let color = DEFAULT_COLOR;
+let color = DEFAULT_PAINT_COLOR;
 
 let isDrawing = false;
 grid.addEventListener('mousedown', () => (isDrawing = true));
@@ -69,10 +69,11 @@ function createGrid(size) {
   }
 }
 
-createGrid(DEFAULT_SIZE);
+createGrid(DEFAULT_GRID_SIZE);
 
 paintColor.addEventListener('input', (e) => {
-  paintButtons.forEach((button) => button.classList.remove('active'));
+  colorPalettes.forEach((button) => button.classList.remove('active'));
+  eraseButton.classList.remove('active');
   colorPalette = null;
   color = e.target.value;
 });
@@ -92,7 +93,7 @@ densityInput.addEventListener('input', (e) => {
 eraseButton.addEventListener('click', (e) => {
   if (!e.target.classList.contains('active')) {
     e.target.classList.add('active');
-    paintButtons.forEach((button) => button.classList.remove('active'));
+    colorPalettes.forEach((button) => button.classList.remove('active'));
     colorPalette = null;
     color = null;
   } else {
@@ -103,27 +104,38 @@ eraseButton.addEventListener('click', (e) => {
 
 clearButton.addEventListener('click', (e) => {
   eraseButton.classList.remove('active');
+  color = paintColor.value;
   createGrid(densityInput.value);
 });
 
 resetButton.addEventListener('click', (e) => {
-  root.style.setProperty('--canvas-color', DEFAULT_BACKGROUND);
-  root.style.setProperty('--grid-color', DEFAULT_BORDERS);
-  paintColor.value = DEFAULT_COLOR;
-  gridBackground.value = DEFAULT_BACKGROUND;
-  gridColor.value = DEFAULT_BORDERS;
+  root.style.setProperty('--canvas-color', DEFAULT_GRID_BACKGROUND);
+  root.style.setProperty('--grid-color', DEFAULT_GRID_COLOR);
+  paintColor.value = DEFAULT_PAINT_COLOR;
+  gridBackground.value = DEFAULT_GRID_BACKGROUND;
+  gridColor.value = DEFAULT_GRID_COLOR;
+  colorPalette = null;
+  color = DEFAULT_PAINT_COLOR;
 
-  paintButtons.forEach((button) => button.classList.remove('active'));
+  colorPalettes.forEach((button) => button.classList.remove('active'));
   eraseButton.classList.remove('active');
 
-  createGrid(DEFAULT_SIZE);
+  createGrid(DEFAULT_GRID_SIZE);
 });
 
-paintButtons.forEach((button) => {
+colorPalettes.forEach((button) => {
   button.addEventListener('click', (e) => {
-    paintButtons.forEach((button) => button.classList.remove('active'));
-    e.target.classList.add('active');
-    colorPalette = e.target.classList[0];
+    if (button.classList.contains('active')) {
+      button.classList.remove('active');
+      color = paintColor.value;
+      colorPalette = null;
+    } else {
+      colorPalettes.forEach((button) => button.classList.remove('active'));
+      e.target.classList.add('active');
+      color = null;
+      colorPalette = e.target.classList[0];
+    }
+
     eraseButton.classList.remove('active');
   });
 });
@@ -149,15 +161,9 @@ function changeColor(e) {
 }
 
 function applyColor(cell) {
-  if (eraseButton.classList.contains('active')) {
-    cell.style.backgroundColor = '';
-  }
-
-  if (!colorPalette) {
+  if (color) {
     cell.style.backgroundColor = color;
-  }
-
-  if (colorPalette) {
+  } else if (colorPalette) {
     if (colorPalette === 'shading' || colorPalette === 'lighten') {
       const currentColor =
         cell.style.backgroundColor ||
@@ -171,6 +177,8 @@ function applyColor(cell) {
 
       cell.style.backgroundColor = getColor(colorPalette);
     }
+  } else {
+    cell.style.backgroundColor = '';
   }
 
   cell.className = '';
