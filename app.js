@@ -39,31 +39,6 @@ function createGrid(size) {
     for (let col = 0; col < size; col++) {
       const cell = document.createElement('div');
       cell.classList.add('grid-item');
-
-      if (row === 0) {
-        cell.style.borderTop = 'none';
-      }
-
-      if (col === size - 1) {
-        cell.style.borderRight = 'none';
-      }
-
-      if (col === 0) {
-        cell.style.borderLeft = 'none';
-      }
-
-      if (row === size - 1) {
-        cell.style.borderBottom = 'none';
-      }
-
-      if (row === 0 && col === 0) {
-        cell.style.borderTopLeftRadius = '6px';
-      }
-
-      if (row === size - 1 && col === 0) {
-        cell.style.borderBottomLeftRadius = '6px';
-      }
-
       grid.appendChild(cell);
     }
   }
